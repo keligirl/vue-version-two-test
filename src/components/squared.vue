@@ -55,7 +55,7 @@
 import draggable from "vuedraggable";
 
 export default {
-  name: "Index",
+  name: "Squared",
   components: {
     draggable,
   },
@@ -71,91 +71,96 @@ export default {
             { id: 1, name: "姓名a", num: 1 },
             { id: 2, name: "姓名b", num: 1 },
             { id: 3, name: "姓名c", num: 1 },
+            { id: 4, name: "姓名d", num: 1 },
+            { id: 6, name: "姓名e", num: 1 },
+            { id: 7, name: "姓名f", num: 1 },
+            { id: 8, name: "姓名e", num: 1 },
+            { id: 9, name: "姓名f", num: 1 },
           ],
         },
-        {
-          id: 2,
-          name: "这里是id2",
-          remark: "这里是备注",
-          userList: [
-            { id: 5, name: "姓名2a", num: 2 },
-            { id: 6, name: "姓名2b", num: 2 },
-            { id: 7, name: "姓名2c", num: 2 },
-          ],
-        },
-        {
-          id: 3,
-          class: "bad",
-          name: "这里是id3",
-          remark: "这里是备注",
-          userList: [
-            { id: 8, name: "姓名3a", num: 3 },
-            { id: 9, name: "姓名3b", num: 3 },
-            { id: 10, name: "姓名3c", num: 3 },
-          ],
-        },
-        {
-          id: 4,
-          name: "这里是id4",
-          remark: "这里是备注",
-          userList: [
-            { id: 11, name: "姓名4a", num: 4 },
-            { id: 12, name: "姓名4b", num: 4 },
-            { id: 13, name: "姓名4c", num: 4 },
-          ],
-        },
-        {
-          id: 5,
-          name: "这里是id5",
-          class: "good",
-          remark: "这里是备注",
-          userList: [
-            { id: 14, name: "姓名5a", num: 5 },
-            { id: 15, name: "姓名5b", num: 5 },
-            { id: 16, name: "姓名5c", num: 5 },
-          ],
-        },
-        {
-          id: 6,
-          name: "这里是id6",
-          class: "good",
-          remark: "这里是备注",
-          userList: [
-            { id: 61, name: "姓名6a", num: 6 },
-            { id: 62, name: "姓名6b", num: 6 },
-            { id: 63, name: "姓名6c", num: 6 },
-          ],
-        },
-        {
-          id: 7,
-          name: "这里是id7",
-          remark: "这里是备注",
-          userList: [
-            { id: 71, name: "姓名7a", num: 7 },
-            { id: 72, name: "姓名7b", num: 7 },
-            { id: 73, name: "姓名7c", num: 7 },
-          ],
-        },
-        {
-          id: 8,
-          name: "这里是id8",
-          remark: "这里是备注",
-          userList: [
-            { id: 81, name: "姓名8a", num: 8 },
-            { id: 82, name: "姓名8b", num: 8 },
-            { id: 83, name: "姓名8c", num: 8 },
-          ],
-        },
-        {
-          id: 9,
-          name: "这里是id9",
-          remark: "这里是备注",
-          userList: [
-            { id: 91, name: "姓名9a", num: 9 },
-            { id: 92, name: "姓名9b", num: 9 },
-            { id: 93, name: "姓名9c", num: 9 },
-          ],
-        },
+        // {
+        //   id: 2,
+        //   name: "这里是id2",
+        //   remark: "这里是备注",
+        //   userList: [
+        //     { id: 5, name: "姓名2a", num: 2 },
+        //     { id: 6, name: "姓名2b", num: 2 },
+        //     { id: 7, name: "姓名2c", num: 2 },
+        //   ],
+        // },
+        // {
+        //   id: 3,
+        //   class: "bad",
+        //   name: "这里是id3",
+        //   remark: "这里是备注",
+        //   userList: [
+        //     { id: 8, name: "姓名3a", num: 3 },
+        //     { id: 9, name: "姓名3b", num: 3 },
+        //     { id: 10, name: "姓名3c", num: 3 },
+        //   ],
+        // },
+        // {
+        //   id: 4,
+        //   name: "这里是id4",
+        //   remark: "这里是备注",
+        //   userList: [
+        //     { id: 11, name: "姓名4a", num: 4 },
+        //     { id: 12, name: "姓名4b", num: 4 },
+        //     { id: 13, name: "姓名4c", num: 4 },
+        //   ],
+        // },
+        // {
+        //   id: 5,
+        //   name: "这里是id5",
+        //   class: "good",
+        //   remark: "这里是备注",
+        //   userList: [
+        //     { id: 14, name: "姓名5a", num: 5 },
+        //     { id: 15, name: "姓名5b", num: 5 },
+        //     { id: 16, name: "姓名5c", num: 5 },
+        //   ],
+        // },
+        // {
+        //   id: 6,
+        //   name: "这里是id6",
+        //   class: "good",
+        //   remark: "这里是备注",
+        //   userList: [
+        //     { id: 61, name: "姓名6a", num: 6 },
+        //     { id: 62, name: "姓名6b", num: 6 },
+        //     { id: 63, name: "姓名6c", num: 6 },
+        //   ],
+        // },
+        // {
+        //   id: 7,
+        //   name: "这里是id7",
+        //   remark: "这里是备注",
+        //   userList: [
+        //     { id: 71, name: "姓名7a", num: 7 },
+        //     { id: 72, name: "姓名7b", num: 7 },
+        //     { id: 73, name: "姓名7c", num: 7 },
+        //   ],
+        // },
+        // {
+        //   id: 8,
+        //   name: "这里是id8",
+        //   remark: "这里是备注",
+        //   userList: [
+        //     { id: 81, name: "姓名8a", num: 8 },
+        //     { id: 82, name: "姓名8b", num: 8 },
+        //     { id: 83, name: "姓名8c", num: 8 },
+        //   ],
+        // },
+        // {
+        //   id: 9,
+        //   name: "这里是id9",
+        //   remark: "这里是备注",
+        //   userList: [
+        //     { id: 91, name: "姓名9a", num: 9 },
+        //     { id: 92, name: "姓名9b", num: 9 },
+        //     { id: 93, name: "姓名9c", num: 9 },
+        //   ],
+        // },
       ],
       moveUserInfo: {},
     };
@@ -168,7 +173,9 @@ export default {
     //开始拖拽事件
     onStart(e) {},
     //拖拽结束事件
-    onEnd(e, a) {},
+    onEnd(e, a) {
+      console.log(this.dataArr);
+    },
     // 元素移动到另一个框
     add(e) {
       this.$confirm("确定移动?", "提示", {
@@ -199,6 +206,7 @@ export default {
               item.userList.unshift(userItem);
             }
           });
+
         });
     },
     // 元素移动
@@ -266,8 +274,6 @@ export default {
     color: #000;
     font-weight: bold;
   }
-}
-.ghostClass {
 }
 .remove-name {
   color: #000;
