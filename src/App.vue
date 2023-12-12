@@ -2,7 +2,8 @@
   <div id="app">
     <!-- <HelloWorld msg="Welcome to Your Vue.js App"/> -->
     <!-- <vuedraggable/> -->
-    <upload></upload>
+    <!-- <upload></upload> -->
+    <squared></squared>
   </div>
 </template>
 
@@ -10,13 +11,15 @@
 import HelloWorld from './components/HelloWorld.vue'
 import vuedraggable from './components/vuedraggable.vue';
 import upload from './components/upload.vue';
+import squared from './components/squared.vue';
 
 export default {
   name: 'App',
   components: {
     HelloWorld,
     vuedraggable,
-    upload
+    upload,
+    squared
   }
 }
 </script>
