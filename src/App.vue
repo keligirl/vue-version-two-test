@@ -3,45 +3,52 @@
     <!-- <HelloWorld msg="Welcome to Your Vue.js App"/> -->
     <!-- <vuedraggable/> -->
     <!-- <upload></upload> -->
-    <squared></squared>
+    <!-- <squared></squared> -->
     <!-- <grid :items="items" @input="updateItemsOrder"></grid> -->
+    <Syntax v-model="vModel"></Syntax>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-import vuedraggable from './components/vuedraggable.vue';
-import upload from './components/upload.vue';
-import squared from './components/squared.vue';
-import grid from "./components/grid.vue"
+import HelloWorld from "./components/HelloWorld.vue";
+import vuedraggable from "./components/vuedraggable.vue";
+import upload from "./components/upload.vue";
+import squared from "./components/squared.vue";
+import grid from "./components/grid.vue";
+import Syntax from "./components/Syntax.vue";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
     HelloWorld,
     vuedraggable,
     upload,
     squared,
-    grid
+    grid,
+    Syntax
   },
   data() {
     return {
       items: [
-        { id: 1, content: 'Item 1' },
-        { id: 2, content: 'Item 2' },
-        { id: 3, content: 'Item 3' },
-        { id: 4, content: 'Item 4' },
-        { id: 5, content: 'Item 5' },
+        { id: 1, content: "Item 1" },
+        { id: 2, content: "Item 2" },
+        { id: 3, content: "Item 3" },
+        { id: 4, content: "Item 4" },
+        { id: 5, content: "Item 5" },
       ],
-    }
+      // vModel: "222",
+      vModel: {
+        value: "222"
+      }
+    };
   },
   methods: {
     updateItemsOrder(newOrder) {
       this.items = newOrder;
-      console.log('新排序:', newOrder);
+      console.log("新排序:", newOrder);
     },
-  }
-}
+  },
+};
 </script>
 
 <style>
