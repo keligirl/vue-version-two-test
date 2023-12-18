@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    div {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100px;
+      height: 100px;
+    }
+
+    img {
+      width: auto;
+      height: auto;
+      max-width: 100%;
+      max-height: 100%;
+    }
+  </style>
+</head>
+
+<body>
+  <div>
+    <img src="https://pic.ibaotu.com/spiders/111407-59a634e696640.jpg" alt="">
+  </div>
+  <button id="addressChange">地址切换监听</button>
+
+  <script async>
+    var btn = document.querySelector("#addressChange");
+    btn.addEventListener("click", function () {
+      window.location.hash = "#hhh"
+      window.location.href = "https://www.baidu.com/?tn=15007414_9_dg"
+    })
+
+    window.addEventListener("hashchange", function () {
+      console.log(111);
+    }, true)
+  </script>
+</body>
+
+</html>
