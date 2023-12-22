@@ -5,7 +5,8 @@
     <!-- <upload></upload> -->
     <!-- <squared></squared> -->
     <!-- <grid :items="items" @input="updateItemsOrder"></grid> -->
-    <Syntax v-model="vModel"></Syntax>
+    <!-- <Syntax v-model="vModel"></Syntax> -->
+    <animalCss></animalCss>
   </div>
 </template>
 
@@ -16,6 +17,7 @@ import upload from "./components/upload.vue";
 import squared from "./components/squared.vue";
 import grid from "./components/grid.vue";
 import Syntax from "./components/Syntax.vue";
+import animalCss from "./components/animalCss.vue"
 
 export default {
   name: "App",
@@ -25,7 +27,8 @@ export default {
     upload,
     squared,
     grid,
-    Syntax
+    Syntax,
+    animalCss
   },
   data() {
     return {
