@@ -6,7 +6,10 @@
     <!-- <squared></squared> -->
     <!-- <grid :items="items" @input="updateItemsOrder"></grid> -->
     <!-- <Syntax v-model="vModel"></Syntax> -->
-    <animalCss></animalCss>
+    <!-- <animalCss></animalCss> -->
+    <KeepAlive>
+      <component :is="currentComponent" id="1"></component>
+    </KeepAlive>
   </div>
 </template>
 
@@ -42,7 +45,9 @@ export default {
       // vModel: "222",
       vModel: {
         value: "222"
-      }
+      },
+      // 动态引入组件
+      currentComponent: "animalCss"
     };
   },
   methods: {
