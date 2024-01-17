@@ -47,7 +47,7 @@ export default {
         value: "222"
       },
       // 动态引入组件
-      currentComponent: "animalCss"
+      currentComponent: "upload"
     };
   },
   methods: {
