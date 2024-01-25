@@ -21,6 +21,7 @@ import squared from "./components/squared.vue";
 import grid from "./components/grid.vue";
 import Syntax from "./components/Syntax.vue";
 import animalCss from "./components/animalCss.vue"
+import qrcode from "./components/qrcode.vue";
 
 export default {
   name: "App",
@@ -31,7 +32,8 @@ export default {
     squared,
     grid,
     Syntax,
-    animalCss
+    animalCss,
+    qrcode
   },
   data() {
     return {
@@ -47,7 +49,7 @@ export default {
         value: "222"
       },
       // 动态引入组件
-      currentComponent: "upload"
+      currentComponent: "qrcode"
     };
   },
   methods: {
