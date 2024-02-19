@@ -1,39 +1,24 @@
 <template>
   <div id="app">
-    <!-- <HelloWorld msg="Welcome to Your Vue.js App"/> -->
-    <!-- <vuedraggable/> -->
-    <!-- <upload></upload> -->
-    <!-- <squared></squared> -->
-    <!-- <grid :items="items" @input="updateItemsOrder"></grid> -->
-    <!-- <Syntax v-model="vModel"></Syntax> -->
-    <!-- <animalCss></animalCss> -->
     <KeepAlive>
-      <component :is="currentComponent" id="1"></component>
+      <component :is="currentComponent" id="1" :value="{}"></component>
     </KeepAlive>
   </div>
 </template>
 
 <script>
 import HelloWorld from "./components/HelloWorld.vue";
-import vuedraggable from "./components/vuedraggable.vue";
-import upload from "./components/upload.vue";
-import squared from "./components/squared.vue";
-import grid from "./components/grid.vue";
-import Syntax from "./components/Syntax.vue";
-import animalCss from "./components/animalCss.vue"
-import qrcode from "./components/qrcode.vue";
+import VueDirective from "./components/VueDirective.vue";
+import VueSet from "./components/VueSet.vue";
+import VueNextTick from "./components/VueNextTick.vue";
 
 export default {
   name: "App",
   components: {
     HelloWorld,
-    vuedraggable,
-    upload,
-    squared,
-    grid,
-    Syntax,
-    animalCss,
-    qrcode
+    VueDirective,
+    VueSet,
+    VueNextTick,
   },
   data() {
     return {
@@ -46,10 +31,10 @@ export default {
       ],
       // vModel: "222",
       vModel: {
-        value: "222"
+        value: "222",
       },
       // 动态引入组件
-      currentComponent: "qrcode"
+      currentComponent: "MyPlugin",
     };
   },
   methods: {

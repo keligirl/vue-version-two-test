@@ -14,7 +14,7 @@ export default {
   name: "Syntax",
   comments: {},
   props: {
-    value: [String,Object],
+    value: [String, Object],
   },
   mixins: {},
   data() {
@@ -34,19 +34,21 @@ export default {
     change(item) {
       // Vue.set(item, "change", "hhh");
       this.$set(item, "change", "hhh");
+
+      this.$delete(item, "id");
+      console.log(item)
       this.handleChangevalue();
     },
     handleChangevalue() {
-      if(typeof this.value=="string") {
-        this.value="111";
-      }else {
-        this.value.value="111"
+      if (typeof this.value == "string") {
+        this.value = "111";
+      } else {
+        this.value.value = "111";
       }
-    }
+    },
   },
-
   created() {
     console.log(this.value);
-  }
+  },
 };
 </script>
