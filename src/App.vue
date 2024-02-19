@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <vue-plugin>我是自定义插件</vue-plugin>
     <KeepAlive>
       <component :is="currentComponent" id="1" :value="{}"></component>
     </KeepAlive>
@@ -34,7 +35,7 @@ export default {
         value: "222",
       },
       // 动态引入组件
-      currentComponent: "MyPlugin",
+      currentComponent: "VueDirective",
     };
   },
   methods: {

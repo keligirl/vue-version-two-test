@@ -1,5 +1,10 @@
 <template>
-  <button class="button" :class="type" @click="handleClick" :disabled="disabled">
+  <button
+    class="button"
+    :class="type"
+    @click="handleClick"
+    :disabled="disabled"
+  >
     <slot></slot>
   </button>
 </template>
@@ -9,28 +14,28 @@ export default {
   props: {
     type: {
       type: String,
-      default: 'default'
+      default: "default",
     },
     disabled: {
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
   },
   methods: {
     handleClick() {
-      this.$emit('click');
-    }
-  }
+      this.$emit("click");
+    },
+  },
 };
 </script>
 
 <style>
 .button {
   /* 样式 */
-  border-radius: 5px;
-  width: 90px;
   height: 30px;
-  font-size: 32px;
+  border-radius: 5px;
+  border: 1px solid #fff;
+  font-size: 14px;
   color: #fff;
 }
 .default {

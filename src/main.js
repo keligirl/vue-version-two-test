@@ -18,7 +18,7 @@ console.log(Vue.directive("focus"))
 
 //使用第三方插件
 Vue.use(ElementUI);
-//自定义第三方插件
+// 自定义第三方插件
 Vue.use(VuePlugin);
 
 Vue.config.productionTip = false;
