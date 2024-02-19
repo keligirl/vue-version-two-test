@@ -2,7 +2,7 @@ import Vue from "vue";
 import ElementUI from "element-ui";
 import "element-ui/lib/theme-chalk/index.css";
 
-import VuePlugin from "./components/VuePlugin"
+import VuePlugin from "./components/VuePlugin";
 
 import App from "./App.vue";
 
@@ -14,7 +14,7 @@ Vue.directive("focus", {
     element.focus();
   },
 });
-console.log(Vue.directive("focus"))
+console.log(Vue.directive("focus"));
 
 //使用第三方插件
 Vue.use(ElementUI);
