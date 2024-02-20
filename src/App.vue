@@ -1,9 +1,23 @@
 <template>
   <div id="app">
+    <div class="padding">=========vue插件开发=========</div>
     <vue-plugin>我是自定义插件</vue-plugin>
+    <div class="padding">=========vue插件开发=========</div>
+
+    <div class="padding">=========Vue定制化组件渲染=========</div>
+    <functionComponentOfRender :level="2"
+      >functionComponentOfRender</functionComponentOfRender
+    >
+    <partComponentsRender
+      >overallSituationComponentOfRender</partComponentsRender
+    >
+    <div class="padding">=========Vue定制化组件渲染=========</div>
+
+    <div class="padding">=========第三方插件使用测试=========</div>
     <KeepAlive>
       <component :is="currentComponent" id="1" :value="{}"></component>
     </KeepAlive>
+    <div class="padding">=========第三方插件使用测试=========</div>
   </div>
 </template>
 
@@ -12,6 +26,7 @@ import HelloWorld from "./components/HelloWorld.vue";
 import VueDirective from "./components/VueDirective.vue";
 import VueSet from "./components/VueSet.vue";
 import VueNextTick from "./components/VueNextTick.vue";
+import partComponentsRender from "./components/part";
 
 export default {
   name: "App",
@@ -20,6 +35,7 @@ export default {
     VueDirective,
     VueSet,
     VueNextTick,
+    partComponentsRender,
   },
   data() {
     return {
@@ -55,5 +71,8 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+.padding {
+  padding: 20px 0;
 }
 </style>
