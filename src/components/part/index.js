@@ -1,10 +1,18 @@
-const partComponentsRender= {
-  render: function(createElement) {
-    return createElement("span",this.$slots.default)
+const partComponentsRender = {
+  render: function (createElement) {
+    return createElement(
+      "span",
+      {
+        style: {
+          color: "red",
+        },
+      },
+      this.$slots.default
+    );
   },
   props: {
-    
-  }
-}
+    name: "render-part",
+  },
+};
 
-export default partComponentsRender
+export default partComponentsRender;

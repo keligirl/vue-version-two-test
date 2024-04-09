@@ -5,9 +5,29 @@
 </template>
 <script>
 export default {
-  data() {
-    return {};
+  props: {
+    bar: {
+      default() {
+        return this.provideInfo;
+      },
+    },
   },
-  mounted() {},
+  data() {
+    return {
+      // bar: this.provideInfo,
+    };
+  },
+  // inject: ["provideInfo"],
+  inject: {
+    provideInfo: {
+      // from: "App",
+      // default: "provideInfo"
+      default: () => [111],
+    },
+  },
+  mounted() {
+    console.log(this.provideInfo);
+    console.log(this.bar);
+  },
 };
 </script>

@@ -1,7 +1,18 @@
 <template>
   <div id="app">
     <div class="padding">=========vue插件开发=========</div>
-    <vue-plugin>我是自定义插件</vue-plugin>
+    <!-- <vue-plugin type="text" @click="handleClick">我是自定义插件</vue-plugin> -->
+    <vue-plugin type="text" @click="handleClick">
+      <template v-slot:header>
+        <h1>函数类型组件</h1>
+      </template>
+
+      <p>button</p>
+
+      <template v-slot:footer>
+        <p>具名作用域插槽</p>
+      </template>
+    </vue-plugin>
     <div class="padding">=========vue插件开发=========</div>
 
     <div class="padding">=========Vue定制化组件渲染=========</div>
@@ -54,10 +65,16 @@ export default {
       currentComponent: "VueDirective",
     };
   },
+  provide: {
+    provideInfo: "我是依赖注入提供方"
+  },
   methods: {
     updateItemsOrder(newOrder) {
       this.items = newOrder;
       console.log("新排序:", newOrder);
+    },
+    handleClick() {
+      console.log("el-button-methods");
     },
   },
 };
