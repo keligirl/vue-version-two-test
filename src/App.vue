@@ -6,23 +6,17 @@
       <template v-slot:header>
         <h4>函数类型组件</h4>
       </template>
-      <template v-slot:default>
-        default
-      </template>
+      <template v-slot:default> default </template>
       <template v-slot:footer>
         <p>具名作用域插槽</p>
       </template>
     </vue-plugin>
 
     <div class="padding">Vue定制化组件渲染</div>
-    <functionComponentOfRender :level="2"
-      >functionComponentOfRender</functionComponentOfRender
-    >
-    <partComponentsRender
-      >overallSituationComponentOfRender</partComponentsRender
-    >
+    <functionComponentOfRender :level="2">functionComponentOfRender</functionComponentOfRender>
+    <partComponentsRender>overallSituationComponentOfRender</partComponentsRender>
 
-    <div class="padding">第三方插件使用测试</div>
+    <div class="padding">动态引入组件</div>
     <KeepAlive>
       <component :is="currentComponent" id="1" :value="{}"></component>
     </KeepAlive>
