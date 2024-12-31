@@ -1,4 +1,4 @@
-import MyPluginButton from "./MyPlugin.vue";
+// import MyPluginButton from "./MyPlugin.vue";
 
 const MyPlugin = {
   install(Vue) {
@@ -38,7 +38,7 @@ const MyPlugin = {
             "button",
             {
               style: { color: "red" },
-              class: { padding: true },
+              class: { padding: false },
               attrs: {
                 id: "my-button",
                 name: "my-button",

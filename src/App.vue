@@ -1,34 +1,31 @@
 <template>
   <div id="app">
-    <div class="padding">=========vue插件开发=========</div>
+    <h2 class="padding">vue插件开发</h2>
     <!-- <vue-plugin type="text" @click="handleClick">我是自定义插件</vue-plugin> -->
     <vue-plugin type="text" @click="handleClick">
       <template v-slot:header>
-        <h1>函数类型组件</h1>
+        <h4>函数类型组件</h4>
       </template>
-
-      <p>button</p>
-
+      <template v-slot:default>
+        default
+      </template>
       <template v-slot:footer>
         <p>具名作用域插槽</p>
       </template>
     </vue-plugin>
-    <div class="padding">=========vue插件开发=========</div>
 
-    <div class="padding">=========Vue定制化组件渲染=========</div>
+    <div class="padding">Vue定制化组件渲染</div>
     <functionComponentOfRender :level="2"
       >functionComponentOfRender</functionComponentOfRender
     >
     <partComponentsRender
       >overallSituationComponentOfRender</partComponentsRender
     >
-    <div class="padding">=========Vue定制化组件渲染=========</div>
 
-    <div class="padding">=========第三方插件使用测试=========</div>
+    <div class="padding">第三方插件使用测试</div>
     <KeepAlive>
       <component :is="currentComponent" id="1" :value="{}"></component>
     </KeepAlive>
-    <div class="padding">=========第三方插件使用测试=========</div>
   </div>
 </template>
 
@@ -82,7 +79,6 @@ export default {
   },
   mounted() {
     console.log("mounted");
-
   },
 };
 </script>
@@ -92,11 +88,13 @@ export default {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #2c3e50;
   margin-top: 60px;
 }
 .padding {
+  width: 100%;
+  height: 24px;
+  background-color: rgb(240, 179, 104);
   padding: 20px 0;
 }
 </style>
