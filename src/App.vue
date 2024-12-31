@@ -39,8 +39,6 @@ import VueSet from "./components/VueSet.vue";
 import VueNextTick from "./components/VueNextTick.vue";
 import partComponentsRender from "./components/part";
 
-import axios from "axios";
-
 export default {
   name: "App",
   components: {
@@ -84,9 +82,7 @@ export default {
   },
   mounted() {
     console.log("mounted");
-    axios.get("http://localhost:5000/api/data").then((response) => {
-      this.message = response.data.message;
-    });
+
   },
 };
 </script>
