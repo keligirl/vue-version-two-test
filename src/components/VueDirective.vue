@@ -1,6 +1,6 @@
 <template>
   <div>
-    <input type="text" name="" id="" v-focus />
+    <input v-model="value" type="text" v-focus />
   </div>
 </template>
 <script>
@@ -11,18 +11,28 @@ export default {
         return this.provideInfo;
       },
     },
-  },
-  data() {
-    return {
-      // bar: this.provideInfo,
-    };
+    modelValue: String,
   },
   // inject: ["provideInfo"],
   inject: {
     provideInfo: {
       // from: "App",
       // default: "provideInfo"
-      default: () => [111],
+      default: () => [],
+    },
+  },
+  emits: ["update:modelValue"],
+  data() {
+    return {};
+  },
+  computed: {
+    value: {
+      get() {
+        return this.modelValue;
+      },
+      set(val) {
+        this.$emit("update:modelValue", val);
+      },
     },
   },
   mounted() {
