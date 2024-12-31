@@ -24,6 +24,8 @@
 </template>
 
 <script>
+import axios from "axios";
+
 import HelloWorld from "./components/HelloWorld.vue";
 import VueDirective from "./components/VueDirective.vue";
 import VueSet from "./components/VueSet.vue";
@@ -57,6 +59,10 @@ export default {
     provideInfo: "我是依赖注入提供方",
   },
   methods: {
+    async getData() {
+      let respose = await axios.get("http://localhost:9000/api/data");
+      console.log(99999, respose);
+    },
     updateItemsOrder(newOrder) {
       this.items = newOrder;
       console.log("新排序:", newOrder);
@@ -67,6 +73,7 @@ export default {
   },
   created() {
     console.log("created");
+    this.getData();
   },
   mounted() {
     console.log("mounted");
