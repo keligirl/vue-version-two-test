@@ -62,7 +62,8 @@ export default {
         console.log(item.file);
         if (item.file.type.search("image") > -1) {
           // 图片文件压缩
-          this.compressImage(item);
+          const files = await this.compressImage(item);
+          console.log("压缩后的文件11111", files);
         }
         if (item.file.type.search("video") > -1) {
           // 视频文件压缩
@@ -109,30 +110,34 @@ export default {
     },
     // 图片文件压缩
     async compressImage(item) {
-      new Compressor(item.file, {
-        quality: 0.6,
+      return new Promise((resolve, reject) => {
+        let response = new Compressor(item.file, {
+          quality: 0.6,
 
-        // The compression process is asynchronous,
-        // which means you have to access the `result` in the `success` hook function.
-        success(result) {
-          const formData = new FormData();
-          console.log("压缩执行结果：", result);
+          // The compression process is asynchronous,
+          // which means you have to access the `result` in the `success` hook function.
+          success(result) {
+            const formData = new FormData();
+            console.log("压缩执行结果：", result);
 
-          // The third parameter is required for server
-          formData.append("file", result, result.name);
-          console.log("压缩后的图片：", formData);
+            // The third parameter is required for server
+            const files = new File([blob], "out.jpg", {
+              type: "image/jpg",
+              lastModified: Date.now(),
+            });
 
-          const img = document.getElementById("img");
-          img.src = URL.createObjectURL(result);
+            const img = document.getElementById("img");
+            img.src = URL.createObjectURL(result);
 
-          // Send the compressed image file to server with XMLHttpRequest.
-          // axios.post("/path/to/upload", formData).then(() => {
-          //   console.log("Upload success");
-          // });
-        },
-        error(err) {
-          console.log(err.message);
-        },
+            resolve(files);
+          },
+          error(err) {
+            console.log(err.message);
+            reject(err);
+          },
+        });
+
+        console.log("9999", response);
       });
     },
   },
