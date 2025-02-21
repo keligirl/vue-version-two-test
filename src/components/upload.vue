@@ -32,7 +32,8 @@
       </div>
     </el-upload>
 
-    <video id="video" controls></video>
+    <video id="video" controls width="200px" height="200px"></video>
+    <img id="img" width="200px" height="200px" />
   </div>
 </template>
 
@@ -75,7 +76,8 @@ export default {
     // 视频文件压缩
     async compressVideo(item) {
       const ffmpeg = createFFmpeg({
-        corePath: "ffmpeg-core.js",
+        // corePath: "https://unpkg.com/@ffmpeg/core@0.10.0/dist/ffmpeg-core.js",
+        corePath: "/ffmpeg-core.js",
         log: true,
       });
 
@@ -109,10 +111,14 @@ export default {
         // which means you have to access the `result` in the `success` hook function.
         success(result) {
           const formData = new FormData();
+          console.log("压缩执行结果：", result);
 
           // The third parameter is required for server
           formData.append("file", result, result.name);
-          console.log("压缩后的图片", formData);
+          console.log("压缩后的图片：", formData);
+
+          const img = document.getElementById("img");
+          img.src = URL.createObjectURL(result);
 
           // Send the compressed image file to server with XMLHttpRequest.
           // axios.post("/path/to/upload", formData).then(() => {
