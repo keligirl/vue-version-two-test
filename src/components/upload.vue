@@ -21,10 +21,7 @@
         </template>
 
         <span class="el-upload-list__item-actions">
-          <span
-            class="el-upload-list__item-preview"
-            @click="handlePictureCardPreview(file)"
-          >
+          <span class="el-upload-list__item-preview" @click="handlePictureCardPreview(file)">
             <i class="el-icon-zoom-in"></i>
           </span>
 
@@ -41,17 +38,12 @@
 
 <script>
 import { createFFmpeg, fetchFile } from "@ffmpeg/ffmpeg";
+import Compressor from "compressorjs";
+
 export default {
   data() {
     return {
-      fileList: [
-        {
-          type: "video",
-          name: "food.jpg",
-          url: "../assets/20231208_225737.mp4",
-        },
-        { type: "image", name: "nature.jpg", url: "../assets/logo.png" },
-      ],
+      fileList: [],
     };
   },
   methods: {
@@ -67,51 +59,70 @@ export default {
     async customReq(item) {
       try {
         console.log(item.file);
-        console.log(1705469766865 - 1705469778235);
-
-        const ffmpeg = createFFmpeg({
-          corePath: "ffmpeg-core.js",
-          log: true,
-        });
-
-        await ffmpeg.load();
-        console.log("开始压缩");
-        ffmpeg.FS("writeFile", item.file.name, await fetchFile(item.file));
-        await ffmpeg.run(
-          "-i",
-          item.file.name,
-          "-r",
-          "10",
-          "-b",
-          "100000",
-          "put.mp4"
-        );
-        console.log("压缩完成");
-        const data = ffmpeg.FS("readFile", "put.mp4");
-        //把压缩后的视频进行回显
-        let files = new File([data.buffer], item.file.name, {
-          type: "video/mp4",
-        });
-        console.log(1111, files);
-        console.log(Date.now());
-
-        const video = document.getElementById("video");
-        video.src = URL.createObjectURL(
-          new Blob([data.buffer], {
-            type: "video/mp4",
-          })
-        );
-
-        return;
-        const result = await this.$AliyunOssUploadService.upload(item.file);
-        if (result) {
-          item.file.id = result.data.id;
-          item.onSuccess(result, item.file);
+        if (item.file.type.search("image") > -1) {
+          // 图片文件压缩
+          this.compressImage(item);
+        }
+        if (item.file.type.search("video") > -1) {
+          // 视频文件压缩
+          const files = await this.compressVideo(item);
+          console.log("压缩后的文件", files);
         }
       } catch (error) {
-        // item.onError(err, item.file);
-        console.log(11111);
+        console.log(error);
       }
+    },
+    // 视频文件压缩
+    async compressVideo(item) {
+      const ffmpeg = createFFmpeg({
+        corePath: "ffmpeg-core.js",
+        log: true,
+      });
+
+      await ffmpeg.load();
+      console.log("开始压缩");
+      ffmpeg.FS("writeFile", item.file.name, await fetchFile(item.file));
+      await ffmpeg.run("-i", item.file.name, "-r", "10", "-b", "100000", "put.mp4");
+      console.log("压缩完成");
+      const data = ffmpeg.FS("readFile", "put.mp4");
+      //把压缩后的视频进行回显
+      let files = new File([data.buffer], item.file.name, {
+        type: "video/mp4",
+      });
+      console.log("压缩后的文件", files);
+
+      const video = document.getElementById("video");
+      video.src = URL.createObjectURL(
+        new Blob([data.buffer], {
+          type: "video/mp4",
+        })
+      );
+
+      return files;
+    },
+    // 图片文件压缩
+    async compressImage(item) {
+      new Compressor(item.file, {
+        quality: 0.6,
+
+        // The compression process is asynchronous,
+        // which means you have to access the `result` in the `success` hook function.
+        success(result) {
+          const formData = new FormData();
+
+          // The third parameter is required for server
+          formData.append("file", result, result.name);
+          console.log("压缩后的图片", formData);
+
+          // Send the compressed image file to server with XMLHttpRequest.
+          // axios.post("/path/to/upload", formData).then(() => {
+          //   console.log("Upload success");
+          // });
+        },
+        error(err) {
+          console.log(err.message);
+        },
+      });
     },
   },
 };

@@ -16,6 +16,8 @@
     <functionComponentOfRender :level="2">functionComponentOfRender</functionComponentOfRender>
     <partComponentsRender>overallSituationComponentOfRender</partComponentsRender>
 
+    <Upload></Upload>
+
     <div class="padding">动态引入组件</div>
     <KeepAlive>
       <component v-model="modelValue" :is="currentComponent"></component>
@@ -31,6 +33,7 @@ import VueDirective from "./components/VueDirective.vue";
 import VueSet from "./components/VueSet.vue";
 import VueNextTick from "./components/VueNextTick.vue";
 import partComponentsRender from "./components/part";
+import Upload from "./components/Upload.vue";
 
 export default {
   name: "App",
@@ -40,6 +43,7 @@ export default {
     VueSet,
     VueNextTick,
     partComponentsRender,
+    Upload
   },
   data() {
     return {

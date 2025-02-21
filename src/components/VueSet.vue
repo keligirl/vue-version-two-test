@@ -36,7 +36,7 @@ export default {
       this.$set(item, "change", "hhh");
 
       this.$delete(item, "id");
-      console.log(item)
+      console.log(item);
       this.handleChangevalue();
     },
     handleChangevalue() {
@@ -47,8 +47,17 @@ export default {
       }
     },
   },
+  beforeCreate() {},
   created() {
     console.log(this.value);
   },
+  beforeMount() {},
+  mounted() {},
+  beforeUpdate() {},
+  destroyed() {},
+  beforeRouteEnter(to, from, next) {
+    // ...
+  },
+  beforeRouteLeave(to, from, next) {},
 };
 </script>
