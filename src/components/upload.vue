@@ -120,7 +120,7 @@ export default {
             console.log("压缩执行结果：", result);
 
             // The third parameter is required for server
-            const files = new File([blob], "out.jpg", {
+            const files = new File([result], "out.jpg", {
               type: "image/jpg",
               lastModified: Date.now(),
             });
