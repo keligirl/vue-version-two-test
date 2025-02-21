@@ -77,7 +77,12 @@ export default {
     async compressVideo(item) {
       const ffmpeg = createFFmpeg({
         // corePath: "https://unpkg.com/@ffmpeg/core@0.10.0/dist/ffmpeg-core.js",
-        corePath: "/ffmpeg-core.js",
+        // * 文件直接放到public目录下 start
+        // corePath: "ffmpeg-core.js",
+        // corePath: "/ffmpeg-core.js",
+        // * 文件直接放到public目录下 end
+        corePath: "/corePath/ffmpeg-core.js",
+        // ! 如果是空，则路径是@ffmpeg/core/dist/ffmpeg-core.js'。但是依赖中就是没有该文件
         log: true,
       });
 
