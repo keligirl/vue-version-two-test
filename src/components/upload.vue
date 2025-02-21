@@ -89,7 +89,7 @@ export default {
       await ffmpeg.load();
       console.log("开始压缩");
       ffmpeg.FS("writeFile", item.file.name, await fetchFile(item.file));
-      await ffmpeg.run("-i", item.file.name, "-r", "10", "-b", "100000", "put.mp4");
+      await ffmpeg.run("-i", item.file.name, "-r", "30", "-b", "1000", "put.mp4");
       console.log("压缩完成");
       const data = ffmpeg.FS("readFile", "put.mp4");
       //把压缩后的视频进行回显
