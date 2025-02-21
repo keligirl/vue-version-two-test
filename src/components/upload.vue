@@ -117,7 +117,6 @@ export default {
           // The compression process is asynchronous,
           // which means you have to access the `result` in the `success` hook function.
           success(result) {
-            const formData = new FormData();
             console.log("压缩执行结果：", result);
 
             // The third parameter is required for server
