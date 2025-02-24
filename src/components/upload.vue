@@ -33,7 +33,7 @@
     </el-upload>
 
     <video id="video" controls width="200px" height="200px"></video>
-    <img id="img" width="200px" height="200px" />
+    <img id="img"  width="200px" height="200px"/>
   </div>
 </template>
 
@@ -76,6 +76,8 @@ export default {
     },
     // 视频文件压缩
     async compressVideo(item) {
+      console.log(Date.now());
+
       const ffmpeg = createFFmpeg({
         // corePath: "https://unpkg.com/@ffmpeg/core@0.10.0/dist/ffmpeg-core.js",
         // * 文件直接放到public目录下 start
@@ -89,18 +91,43 @@ export default {
 
       await ffmpeg.load();
       console.log("开始压缩");
-      ffmpeg.FS("writeFile", item.file.name, await fetchFile(item.file));
+      ffmpeg.FS("writeFile", "input.mp4", await fetchFile(item.file));
+
+      // 运行 FFmpeg 命令
       await ffmpeg.run(
         "-i",
-        item.file.name,
-        "-r",
-        "30",
-        "-b:v",
-        "1600k", // 设置视频比特率为 800kbps
-        "-b:a",
-        "256k",
-        "output.mp4"
+        "input.mp4", // 输入文件
+
+        "-vf",
+        "scale=720:-2,fps=24", // 降低分辨率和帧率
+
+        "-c:v",
+        "libx264", // 使用 H.264 编码器
+
+        "-preset",
+        "ultrafast", // 最快编码速度
+
+        "-tune",
+        "fastdecode", // 优化解码速度
+
+        "-crf",
+        "20", // 质量较差但文件更小
+
+        "-bf",
+        "0", // 禁用 B 帧
+
+        "-refs",
+        "1", // 减少参考帧
+
+        "-me_method",
+        "dia", // 使用快速运动估计算法
+
+        "-c:a",
+        "copy", // 直接复制音频流
+
+        "output.mp4" // 输出文件
       );
+
       console.log("压缩完成");
       const data = ffmpeg.FS("readFile", "output.mp4");
       //把压缩后的视频进行回显
@@ -115,7 +142,7 @@ export default {
           type: "video/mp4",
         })
       );
-
+      console.log(Date.now());
       return files;
     },
     // 图片文件压缩
