@@ -1,7 +1,6 @@
 <template>
   <div id="app">
-    <h2 class="padding">vue插件开发</h2>
-    <!-- <vue-plugin type="text" @click="handleClick">我是自定义插件</vue-plugin> -->
+    <!-- <h2 class="padding">vue插件开发</h2>
     <vue-plugin type="text" @click="handleClick">
       <template v-slot:header>
         <h4>函数类型组件</h4>
@@ -12,11 +11,9 @@
       </template>
     </vue-plugin>
 
-    <div class="padding">Vue定制化组件渲染</div>
+    <h2 class="padding">Vue定制化组件渲染</h2>
     <functionComponentOfRender :level="2">functionComponentOfRender</functionComponentOfRender>
-    <partComponentsRender>overallSituationComponentOfRender</partComponentsRender>
-
-    <Upload></Upload>
+    <partComponentsRender>overallSituationComponentOfRender</partComponentsRender> -->
 
     <div class="padding">动态引入组件</div>
     <KeepAlive>
@@ -28,21 +25,23 @@
 <script>
 import axios from "axios";
 
-import HelloWorld from "./components/HelloWorld.vue";
 import VueDirective from "./components/VueDirective.vue";
 import VueSet from "./components/VueSet.vue";
 import VueNextTick from "./components/VueNextTick.vue";
 import partComponentsRender from "./components/part";
+
+import HelloWorld from "./components/HelloWorld.vue";
 import Upload from "./components/Upload.vue";
 
 export default {
   name: "App",
   components: {
-    HelloWorld,
     VueDirective,
     VueSet,
     VueNextTick,
     partComponentsRender,
+
+    HelloWorld,
     Upload
   },
   data() {
@@ -55,7 +54,7 @@ export default {
         { id: 5, content: "Item 5" },
       ],
       // 动态引入组件
-      currentComponent: "VueDirective",
+      currentComponent: "Upload",
       modelValue: "",
     };
   },
@@ -65,7 +64,7 @@ export default {
   methods: {
     async getData() {
       let respose = await axios.get("http://localhost:9000/api/data");
-      console.log(99999, respose);
+      console.log("响应数据：", respose);
     },
     updateItemsOrder(newOrder) {
       this.items = newOrder;
@@ -77,7 +76,7 @@ export default {
   },
   created() {
     console.log("created");
-    this.getData();
+    // this.getData();
   },
   mounted() {
     console.log("mounted");
