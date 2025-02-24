@@ -90,9 +90,19 @@ export default {
       await ffmpeg.load();
       console.log("开始压缩");
       ffmpeg.FS("writeFile", item.file.name, await fetchFile(item.file));
-      await ffmpeg.run("-i", item.file.name, "-r", "30", "-b", "1000", "put.mp4");
+      await ffmpeg.run(
+        "-i",
+        item.file.name,
+        "-r",
+        "30",
+        "-b:v",
+        "1600k", // 设置视频比特率为 800kbps
+        "-b:a",
+        "256k",
+        "output.mp4"
+      );
       console.log("压缩完成");
-      const data = ffmpeg.FS("readFile", "put.mp4");
+      const data = ffmpeg.FS("readFile", "output.mp4");
       //把压缩后的视频进行回显
       let files = new File([data.buffer], item.file.name, {
         type: "video/mp4",
@@ -120,7 +130,7 @@ export default {
             console.log("压缩执行结果：", result);
 
             // The third parameter is required for server
-            const files = new File([result], "out.jpg", {
+            const files = new File([result], "output.jpg", {
               type: "image/jpg",
               lastModified: Date.now(),
             });
