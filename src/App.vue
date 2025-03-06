@@ -15,6 +15,10 @@
     <functionComponentOfRender :level="2">functionComponentOfRender</functionComponentOfRender>
     <partComponentsRender>overallSituationComponentOfRender</partComponentsRender> -->
 
+    <!--    debugger -->
+
+    <button @click="handleClick">debugger</button>
+
     <div class="padding">动态引入组件</div>
     <KeepAlive>
       <component v-model="modelValue" :is="currentComponent"></component>
@@ -51,15 +55,15 @@ export default {
         { id: 2, content: "Item 2" },
         { id: 3, content: "Item 3" },
         { id: 4, content: "Item 4" },
-        { id: 5, content: "Item 5" },
+        { id: 5, content: "Item 5" }
       ],
       // 动态引入组件
       currentComponent: "Upload",
-      modelValue: "",
+      modelValue: ""
     };
   },
   provide: {
-    provideInfo: "我是依赖注入提供方",
+    provideInfo: "我是依赖注入提供方"
   },
   methods: {
     async getData() {
@@ -71,8 +75,10 @@ export default {
       console.log("新排序:", newOrder);
     },
     handleClick() {
-      console.log("el-button-methods");
-    },
+      let i = 1;
+      i = i + 1;
+      console.log("el-button-methods:", i);
+    }
   },
   created() {
     console.log("created");
@@ -80,7 +86,7 @@ export default {
   },
   mounted() {
     console.log("mounted");
-  },
+  }
 };
 </script>
 
@@ -91,6 +97,7 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
 }
+
 .padding {
   width: 100%;
   height: 24px;
