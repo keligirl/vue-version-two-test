@@ -1,23 +1,10 @@
-/** * 1. 安装 npm i -S vuedraggable * 2. 引入 import draggable from
-'vuedraggable' * 3. 组件注册 */
+/** * 1. 安装 npm i -S vuedraggable * 2. 引入 import draggable from 'vuedraggable' * 3. 组件注册 */
 <template>
   <section class="section">
-    <div
-      class="box"
-      v-for="itemData in dataArr"
-      :key="itemData.id"
-      :class="itemData.class ? itemData.class : ''"
-    >
-      <el-popover
-        placement="top"
-        width="320"
-        trigger="click"
-        :content="itemData.remark"
-      >
+    <div class="box" v-for="itemData in dataArr" :key="itemData.id" :class="itemData.class ? itemData.class : ''">
+      <el-popover placement="top" width="320" trigger="click" :content="itemData.remark">
         <el-button class="box-title" type="text" slot="reference">{{
-          `${itemData.name}【${itemData.id}】（人数：${
-            (itemData.userList && itemData.userList.length) || 0
-          }）`
+          `${itemData.name}【${itemData.id}】（人数：${(itemData.userList && itemData.userList.length) || 0}）`
         }}</el-button>
       </el-popover>
       <draggable
@@ -36,13 +23,7 @@
       >
         <transition-group class="removeBoxSpan"
           ><!-- 这里是个span -->
-          <div
-            class="remove-item"
-            v-for="item in itemData.userList"
-            :key="item.id"
-            :userName="item.name"
-            :userId="item.id"
-          >
+          <div class="remove-item" v-for="item in itemData.userList" :key="item.id" :userName="item.name" :userId="item.id">
             <span class="remove-name">{{ item.name }}</span>
           </div>
         </transition-group>
@@ -189,24 +170,17 @@ export default {
         .catch(() => {
           // 点击取消 - 元素还原至原来的框
           var userItem = {};
-          const oldBox = this.dataArr.filter(
-            (item) => item.id === this.moveUserInfo.boxId
-          )[0];
-          userItem = oldBox.userList.filter(
-            (val) => val.id === this.moveUserInfo.userId
-          )[0];
+          const oldBox = this.dataArr.filter((item) => item.id === this.moveUserInfo.boxId)[0];
+          userItem = oldBox.userList.filter((val) => val.id === this.moveUserInfo.userId)[0];
 
           this.dataArr.forEach((item) => {
             if (item.id === this.moveUserInfo.boxId) {
-              item.userList = item.userList.filter(
-                (val) => val.id !== this.moveUserInfo.userId
-              );
+              item.userList = item.userList.filter((val) => val.id !== this.moveUserInfo.userId);
             }
             if (item.id === this.moveUserInfo.boxOldId) {
               item.userList.unshift(userItem);
             }
           });
-
         });
     },
     // 元素移动

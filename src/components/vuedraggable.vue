@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import Sortable from 'sortablejs';
+import Sortable from "sortablejs";
 export default {
   data() {
     return {

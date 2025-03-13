@@ -33,7 +33,7 @@
     </el-upload>
 
     <video id="video" controls width="200px" height="200px"></video>
-    <img id="img"  width="200px" height="200px"/>
+    <img id="img" width="200px" height="200px" />
   </div>
 </template>
 

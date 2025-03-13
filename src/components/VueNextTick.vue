@@ -1,19 +1,15 @@
 <template>
-  <div>
-
-  </div>
+  <div></div>
 </template>
 <script>
 export default {
   data() {
-    return {
-
-    }
+    return {};
   },
   mounted() {
-    this.$nextTick(()=> {
+    this.$nextTick(() => {
       console.log("domUpdate");
-    })
-  }
-}
+    });
+  },
+};
 </script>

@@ -3,7 +3,7 @@ import ElementUI from "element-ui";
 import "element-ui/lib/theme-chalk/index.css";
 
 /* 注册全局组件函数组件 */
-import "./components/render"
+import "./components/Render"
 
 import VuePlugin from "./components/VuePlugin";
 

@@ -55,9 +55,7 @@ export default {
   mounted() {},
   beforeUpdate() {},
   destroyed() {},
-  beforeRouteEnter(to, from, next) {
-    // ...
-  },
+  beforeRouteEnter(to, from, next) {},
   beforeRouteLeave(to, from, next) {},
 };
 </script>
